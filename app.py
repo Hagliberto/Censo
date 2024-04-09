@@ -2,8 +2,8 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-
 st.set_page_config(layout="wide")
+
 # Definir o layout
 st.title("Situação do censo 2023")
 
@@ -31,4 +31,8 @@ if csv_file is not None:
     # Análise entre regionais e status
     with st.expander("Análise entre Regionais e Status"):
         crosstab = pd.crosstab(df_original['Regional'], df_original['Status'])
-        st.data_editor(crosstab)
+
+        # Dividir a tabela de crosstab em duas colunas
+        cols = st.columns(2)
+        cols[0].dataframe(crosstab.iloc[:, :len(crosstab.columns) // 2])
+        cols[1].dataframe(crosstab.iloc[:, len(crosstab.columns) // 2:])
