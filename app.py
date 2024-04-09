@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 # Definir o layout
 st.title("Situação do censo 2023")
 
+
+st.set_page_config(layout="wide")
 # Permitir upload de arquivo CSV ou XLSX
 csv_file = st.file_uploader("Faça o upload do arquivo CSV ou XLSX", type=['csv', 'xlsx'])
 
