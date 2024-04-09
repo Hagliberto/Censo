@@ -24,9 +24,9 @@ if csv_file is not None:
     if search_term:
         search_result = df_original[df_original.apply(lambda row: row.astype(str).str.contains(search_term, case=False).any(), axis=1)]
         st.subheader("Resultados da Busca")
-        st.write(search_result)
+        st.data_editor(search_result)
 
     # Análise entre regionais e status
     with st.expander("Análise entre Regionais e Status"):
         crosstab = pd.crosstab(df_original['Regional'], df_original['Status'])
-        st.write(crosstab)
+        st.data_editor(crosstab)
