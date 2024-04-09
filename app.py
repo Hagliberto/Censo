@@ -5,24 +5,6 @@ import matplotlib.pyplot as plt
 # Definir o layout
 st.title("Situação do censo 2023")
 
-# # Criar campos de entrada para cada coluna
-# regional = st.sidebar.text_input("Regional")
-# nome = st.sidebar.text_input("Nome")
-# matricula = st.sidebar.text_input("Matrícula")
-# data_censo = st.sidebar.text_input("Data do Censo")
-# data_analise = st.sidebar.text_input("Data da Análise")
-# status = st.sidebar.text_input("Status")
-
-# # Criar um DataFrame com os dados inseridos manualmente
-# df_manual = pd.DataFrame({
-#     'Regional': [regional],
-#     'Nome': [nome],
-#     'Matrícula': [matricula],
-#     'Data do Censo': [data_censo],
-#     'Data da Análise': [data_analise],
-#     'Status': [status]
-# })
-
 # Permitir upload de arquivo CSV ou XLSX
 csv_file = st.file_uploader("Faça o upload do arquivo CSV ou XLSX", type=['csv', 'xlsx'])
 
@@ -35,7 +17,7 @@ if csv_file is not None:
 
     # Exibir todos os dados em um expander
     with st.expander("Visualizar todos os dados"):
-        st.write(df_original)
+        st.data_editor(df_original)
 
     # Pesquisar por termos nos dados originais
     search_term = st.text_input("Buscar em todas as colunas")
